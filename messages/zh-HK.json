@@ -1,0 +1,442 @@
+{
+  "metadata": {
+    "title": "FAC (香港) 有限公司 | 大中華區金融科技戰略夥伴",
+    "description": "40年金融科技資深專家，橋接西方企業願景與大中華區市場現實。AI原生執行力、監管專業知識、馬拉松級耐力。"
+  },
+  "navigation": {
+    "home": "首頁",
+    "about": "關於",
+    "services": "服務",
+    "insights": "洞察",
+    "contact": "聯絡"
+  },
+  "language": {
+    "switcher": {
+      "label": "語言",
+      "en": "English",
+      "zh-HK": "繁體中文",
+      "zh-CN": "简体中文"
+    }
+  },
+  "hero": {
+    "tagline": "戰略執行樞紐",
+    "title": {
+      "part1": "資深專家的",
+      "highlight1": "智慧",
+      "part2": "。工程師的",
+      "highlight2": "邏輯",
+      "part3": "。"
+    },
+    "description": "FAC以40年金融科技專業知識和AI原生執行力，橋接西方企業願景與大中華區市場現實。",
+    "cta": {
+      "primary": "探索服務",
+      "secondary": "查看案例"
+    }
+  },
+  "stats": {
+    "experience": {
+      "value": "40",
+      "label": "年經驗"
+    },
+    "efficiency": {
+      "value": "10x",
+      "label": "AI效率"
+    },
+    "projects": {
+      "value": "2000億+",
+      "label": "人民幣項目"
+    }
+  },
+  "competencies": {
+    "title": "核心競爭力",
+    "cards": {
+      "brokerage": {
+        "title": "券商轉型",
+        "description": "從併購到數碼轉型的全週期現代化。經驗證實績：高峰期年營收超過10億港元。"
+      },
+      "ai": {
+        "title": "AI原生執行",
+        "description": "我們不只是規劃，而是實際建造。Claude、Cursor及中國領先模型為合作夥伴帶來10倍開發效率。"
+      },
+      "gr": {
+        "title": "政府關係",
+        "description": "精準對接香港及中國內地決策者。具備證監會/港交所合規專業知識及國企合作夥伴關係。"
+      }
+    }
+  },
+  "heroSection": {
+    "headline": {
+      "part1": "從全球卓越到",
+      "highlight1": "AI賦能",
+      "part2": "執行",
+      "highlight2": "戰略增長",
+      "part3": "於大中華區"
+    },
+    "subheadline": "為主權基金及家族辦公室提供戰略導航與加速落地，助您在複雜的大中華金融格局中建立穩固據點。",
+    "valueProps": {
+      "navigation": {
+        "title": "戰略導航",
+        "desc": "四十年機構記憶為您指引穿越監管複雜性與市場動態的航道"
+      },
+      "acceleration": {
+        "title": "加速落地",
+        "desc": "AI增強的運作效率，縮短70%的市場進入時間"
+      }
+    },
+    "cta": {
+      "primary": "開啟拓展之旅",
+      "secondary": "我們的傳承"
+    },
+    "trust": {
+      "label": "卓越傳承",
+      "point1": "Honeywell Bull 全球總裁俱樂部榮譽",
+      "point2": "AI增強執行方法論"
+    },
+    "stats": {
+      "years": {
+        "value": "40",
+        "label": "年卓越歷程",
+        "context": "自1990年Honeywell Bull至今"
+      },
+      "efficiency": {
+        "value": "70%",
+        "label": "更快市場進入",
+        "context": "通過AI增強的運作效率"
+      }
+    },
+    "endurance": {
+      "quote": "每年完成3-6場馬拉松的紀律，正是我們對待客戶夥伴關係的態度——跨越漫長征途的持續承諾。",
+      "badge": "馬拉松級耐力"
+    }
+  },
+  "caseStudy": {
+    "eyebrow": "實績紀錄",
+    "title": "蜂投證券：完整扭虧為盈歷程",
+    "subtitle": "從併購標的到市場領導者——展示從併購到數碼轉型的全流程掌控能力。",
+    "metrics": {
+      "title": "業績指標",
+      "revenue": {
+        "value": "10億港元+",
+        "label": "高峰期年營收",
+        "context": "從虧損到市場領導者的轉變"
+      },
+      "turnaround": {
+        "value": "2.9年",
+        "label": "轉型週期",
+        "context": "2016-2018完整週期"
+      },
+      "traders": {
+        "value": "500+",
+        "label": "活躍量化交易員",
+        "context": "建立活躍交易生態系統"
+      },
+      "recognition": {
+        "value": "2",
+        "label": "港交所獎項",
+        "context": "2017年滬港通認可"
+      }
+    },
+    "insight": {
+      "title": "戰略洞察",
+      "description": "成功的「精品主經紀商+Delta One」模式引發了香港金融業的整體轉型浪潮。"
+    },
+    "transformation": {
+      "title": "轉型時間線",
+      "phase1": {
+        "year": "2016",
+        "title": "收購與重組",
+        "description": "識別美高證券為目標，執行併購，並啟動從傳統業務的戰略轉型。"
+      },
+      "phase2": {
+        "year": "2017",
+        "title": "數碼基礎建設",
+        "description": "部署專有行為大數據模型，整合高速交易基礎設施。"
+      },
+      "phase3": {
+        "year": "2017",
+        "title": "市場認可",
+        "description": "榮獲兩項港交所滬港通大獎，驗證精品主經紀商模式。"
+      },
+      "phase4": {
+        "year": "2018",
+        "title": "市場領導地位",
+        "description": "高峰期年營收達10億港元，確立蜂投為量化交易強者。"
+      }
+    },
+    "impact": {
+      "quote": "這次轉型展示了我們的端到端能力——從識別併購目標到建立行業領先的運營。",
+      "attribution": "FAC執行框架"
+    },
+    "methodology": {
+      "step1": {
+        "title": "戰略評估",
+        "desc": "目標識別與併購執行"
+      },
+      "step2": {
+        "title": "數碼轉型",
+        "desc": "技術現代化與平台建設"
+      },
+      "step3": {
+        "title": "規模與優化",
+        "desc": "生態系統發展與市場擴張"
+      }
+    }
+  },
+  "partners": {
+    "eyebrow": "戰略網絡",
+    "title": "橫跨三大洲的機構聯盟",
+    "subtitle": "與學術機構、政府實體及國際組織的深厚合作關係，增強我們的執行能力。",
+    "hkcas": {
+      "name": "HKCAS",
+      "fullName": "中科院綠色發展國際實驗室",
+      "description": "作為這家香港非營利機構的創始成員及執行董事，專注於可持續發展及跨境投資促進。",
+      "relationship": "創始領導",
+      "year": "自2019年"
+    },
+    "suny": {
+      "name": "紐約州立大學",
+      "fullName": "State University of New York",
+      "description": "學術合作橋接精英研究與機構資本配置，促進美國與亞洲市場之間的知識交流。",
+      "relationship": "學術聯盟",
+      "year": "建立於2013年"
+    },
+    "cbpm": {
+      "name": "中國印鈔造幣",
+      "fullName": "中國印鈔造幣總公司",
+      "description": "與這家國有企業的戰略合資夥伴關係，建立中銀通-SMI作為中國銀行自助服務行業的基石。",
+      "relationship": "國企合資",
+      "year": "合資成立於2005年"
+    },
+    "valueProp": {
+      "title": "網絡效應",
+      "description": "我們的戰略聯盟橫跨政府關係、學術研究及國家層面合作——為進入大中華區的國際企業創造獨特的切入點。",
+      "tag1": "政府關係",
+      "tag2": "學術卓越",
+      "tag3": "國家層面接觸"
+    }
+  },
+  "contact": {
+    "eyebrow": "開始聯絡",
+    "title": "開啟您的大中華區之旅",
+    "subtitle": "與我們的團隊聯絡，討論您的拓展目標。下載我們的香港市場進入策略白皮書。",
+    "whitepaper": {
+      "title": "戰略導航：主權基金香港市場進入指南",
+      "description": "針對機構投資者進入大中華區的監管框架、政府關係策略及運作考量的全面分析。",
+      "note": "白皮書將於表格提交後發送至您的電郵。"
+    },
+    "trust": {
+      "security": "數據安全",
+      "response": "回覆時間"
+    },
+    "form": {
+      "firstName": "名字",
+      "firstNamePlaceholder": "請輸入名字",
+      "lastName": "姓氏",
+      "lastNamePlaceholder": "請輸入姓氏",
+      "email": "電郵地址",
+      "emailPlaceholder": "your.email@company.com",
+      "company": "機構名稱",
+      "companyPlaceholder": "您的機構名稱",
+      "title": "職位",
+      "titlePlaceholder": "例如：董事總經理",
+      "region": "地區",
+      "regionPlaceholder": "選擇您的地區",
+      "regions": {
+        "middleEast": "中東",
+        "southeastAsia": "東南亞",
+        "europe": "歐洲",
+        "americas": "美洲",
+        "other": "其他"
+      },
+      "investmentFocus": "投資重點",
+      "investmentFocusPlaceholder": "例如：金融科技、房地產、PE/VC",
+      "message": "附加訊息",
+      "messagePlaceholder": "請告訴我們您的具體興趣或問題...",
+      "whitepaper": {
+        "label": "請向我發送香港市場進入策略白皮書",
+        "description": "提交後立即透過電郵收到我們的綜合指南。"
+      },
+      "submit": "申請諮詢",
+      "submitting": "提交中...",
+      "error": "發生錯誤，請稍後再試。",
+      "privacy": "提交此表格即表示您同意我們的私隱政策，並同意就您的查詢接收我們的聯絡。"
+    },
+    "errors": {
+      "required": "此欄位必填",
+      "invalidEmail": "請輸入有效的電郵地址"
+    },
+    "success": {
+      "title": "感謝您",
+      "message": "我們已收到您的查詢。我們的團隊將審核您的提交，並在24小時內回覆。",
+      "whitepaper": "香港市場進入策略白皮書已發送至您的電郵。",
+      "reset": "提交另一個查詢"
+    }
+  },
+  "about": {
+    "eyebrow": "關於我們",
+    "title": "精英顧問組成的戰略集體",
+    "narrative": {
+      "paragraph1": "FAC不僅是一家諮詢公司，而是由Mark Lin領銜，匯聚法律、合規、金融科技及政商事務精英的戰略集體。我們的集體能量來自Mark四十年全球視野與團隊成員深厚本土執行力的結合。",
+      "paragraph2": "每位團隊成員都體現了與創辦人一致的「工程師邏輯」與「馬拉松式執行韌性」。我們以工程師的精確與馬拉松選手的耐力，系統性地將複雜的大中華區市場進入分解為可達成的里程碑。",
+      "paragraph3": "對於中東主權基金及東南亞家族辦公室，我們的集體提供獨特價值：機構級執行力，結合涵蓋香港監管機構、北京政策圈及香港科學園創新生態的精英網絡。"
+    },
+    "values": {
+      "title": "核心價值",
+      "engineerLogic": "工程師邏輯：將複雜性分解為可解決的組件",
+      "marathonResilience": "馬拉松韌性：跨越多年的持續執行",
+      "institutionalMemory": "機構記憶：40年市場轉型導航經驗"
+    },
+    "composition": {
+      "title": "團隊組成",
+      "founder": {
+        "name": "Mark GC Lin",
+        "role": "創辦人暨戰略主導"
+      },
+      "legal": "法律及監管",
+      "compliance": "合規",
+      "fintech": "金融科技",
+      "govRelations": "政府關係"
+    },
+    "experience": {
+      "years": "40+",
+      "label": "年合計經驗"
+    },
+    "philosophy": {
+      "wisdom": {
+        "title": "資深智慧",
+        "description": "四十年機構記憶指導戰略決策，幫助客戶避免昂貴的市場進入陷阱。"
+      },
+      "logic": {
+        "title": "工程師邏輯",
+        "description": "結構化、系統化處理複雜挑戰——將不確定性分解為可執行的行動計劃。"
+      },
+      "endurance": {
+        "title": "馬拉松韌性",
+        "description": "對客戶成功的長期承諾，在多年合作中保持執行耐力。"
+      }
+    }
+  },
+  "team": {
+    "eyebrow": "領導層",
+    "title": "認識精英顧問集體",
+    "subtitle": "法律、合規、金融科技及政府關係的深厚專業——以工程師邏輯與馬拉松韌性團結一致。",
+    "founderTitle": "創辦人",
+    "advisorsTitle": "戰略顧問",
+    "clientValue": "客戶價值",
+    "yearsExperience": "年經驗",
+    "certifications": "專業資格",
+    "awards": "榮譽獎項",
+    "focusRegions": "客戶重點地區",
+    "linkedin": "查看LinkedIn檔案",
+    "showMore": "查看完整檔案",
+    "showLess": "收起",
+    "expandingTeam": "擴展精英集體",
+    "stayTuned": "具備法律、合規及政府背景的顧問即將加入。",
+    "regions": {
+      "middle-east": "中東",
+      "southeast-asia": "東南亞",
+      "europe": "歐洲",
+      "americas": "美洲"
+    }
+  },
+  "adminLogin": {
+    "title": "安全登錄",
+    "subtitle": "僅限授權人員。所有登錄嘗試均會被記錄。",
+    "email": "電郵地址",
+    "emailPlaceholder": "mark@hkfac.com",
+    "password": "密碼",
+    "passwordPlaceholder": "請輸入密碼",
+    "signIn": "登錄",
+    "signingIn": "登錄中...",
+    "forgotPassword": "忘記密碼？",
+    "forgotTitle": "密碼重置",
+    "forgotDescription": "輸入管理員電郵以接收驗證碼。",
+    "sendCode": "發送驗證碼",
+    "sending": "發送中...",
+    "codeSent": "驗證碼已發送至 mark@hkfac.com",
+    "verifyDescription": "輸入郵件中的6位數驗證碼。",
+    "verificationCode": "驗證碼",
+    "codePlaceholder": "000000",
+    "verify": "驗證",
+    "verifying": "驗證中...",
+    "resetDescription": "創建新的安全密碼。",
+    "newPassword": "新密碼",
+    "newPasswordPlaceholder": "最少8個字符，1個大寫，1個數字",
+    "confirmPassword": "確認密碼",
+    "confirmPasswordPlaceholder": "再次輸入新密碼",
+    "resetPassword": "重置密碼",
+    "resetting": "重置中...",
+    "resetSuccess": "密碼重置成功。正在跳轉至登錄頁...",
+    "firstLoginTitle": "需要安全設置",
+    "firstLoginDescription": "由於這是您的首次登錄，您必須先設置安全密碼才能訪問管理後臺。",
+    "passwordChanged": "密碼更新成功！",
+    "redirecting": "正在跳轉至管理後臺...",
+    "setPassword": "設置安全密碼",
+    "updatePassword": "更新密碼",
+    "updating": "更新中...",
+    "passwordRequirements": "最少8個字符，包括1個大寫字母及1個數字",
+    "cannotSkip": "您不能跳過此步驟。基於安全考慮，必須更改密碼。",
+    "backToSite": "返回主網站",
+    "securityNote": "這是安全管理介面。未經授權的訪問將被禁止並受監控。",
+    "errors": {
+      "invalidEmail": "請輸入有效的電郵地址",
+      "unauthorized": "此電郵無權訪問管理後臺",
+      "invalidCredentials": "電郵或密碼錯誤",
+      "unknown": "發生意外錯誤",
+      "sendFailed": "發送驗證碼失敗",
+      "invalidCode": "驗證碼無效或已過期",
+      "passwordMismatch": "密碼不一致",
+      "passwordTooShort": "密碼必須至少8個字符",
+      "passwordNoUppercase": "密碼必須包含至少一個大寫字母",
+      "passwordNoNumber": "密碼必須包含至少一個數字",
+      "resetFailed": "重置密碼失敗",
+      "changeFailed": "更改密碼失敗"
+    }
+  },
+  "adminDashboard": {
+    "title": "管理中心",
+    "subtitle": "管理團隊成員、查看潛在客戶查詢及設置系統。",
+    "loading": "載入中...",
+    "logout": "登出",
+    "nav": {
+      "team": "團隊管理",
+      "leads": "潛在客戶管理",
+      "settings": "設置"
+    },
+    "stats": {
+      "totalMembers": "成員總數",
+      "approvedIllustrations": "已批核插畫",
+      "pendingIllustrations": "待處理插畫",
+      "totalExperience": "合計年資"
+    },
+    "section": {
+      "team": "團隊成員"
+    },
+    "founder": "創辦人",
+    "addMember": "添加新成員",
+    "noIllustration": "未有插畫",
+    "status": {
+      "approved": "已批核",
+      "pending": "待處理",
+      "generated": "已生成"
+    },
+    "guidelines": {
+      "title": "插畫風格規範",
+      "description": "確保所有團隊成員插畫均遵循FAC視覺標準，以保持品牌一致性。",
+      "viewDoc": "查看 FAC_Illustration_Style.md"
+    }
+  },
+  "cta": {
+    "title": "準備進軍大中華區？",
+    "description": "與擁有40年經驗的資深專家合作，結合經驗智慧與AI增強執行力。",
+    "button": "預約諮詢"
+  },
+  "footer": {
+    "copyright": "© 2026 FAC (香港) 有限公司 版權所有",
+    "links": {
+      "privacy": "私隱政策",
+      "terms": "服務條款",
+      "contact": "聯絡我們"
+    }
+  }
+}

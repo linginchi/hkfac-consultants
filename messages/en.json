@@ -1,0 +1,442 @@
+{
+  "metadata": {
+    "title": "FAC (Hong Kong) Ltd. | Strategic FinTech Partner for Greater China",
+    "description": "40-year FinTech veteran bridging Western enterprise ambitions and Greater China market realities. AI-native execution, regulatory expertise, and marathon-grade endurance."
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "insights": "Insights",
+    "contact": "Contact"
+  },
+  "language": {
+    "switcher": {
+      "label": "Language",
+      "en": "English",
+      "zh-HK": "繁體中文",
+      "zh-CN": "简体中文"
+    }
+  },
+  "hero": {
+    "tagline": "Strategic Execution Hub",
+    "title": {
+      "part1": "Wisdom of a ",
+      "highlight1": "Veteran",
+      "part2": ". Logic of an ",
+      "highlight2": "Engineer",
+      "part3": "."
+    },
+    "description": "FAC bridges Western enterprise ambitions and Greater China market realities with 40 years of FinTech expertise and AI-native execution power.",
+    "cta": {
+      "primary": "Explore Services",
+      "secondary": "View Case Studies"
+    }
+  },
+  "stats": {
+    "experience": {
+      "value": "40",
+      "label": "Years Experience"
+    },
+    "efficiency": {
+      "value": "10x",
+      "label": "AI Efficiency"
+    },
+    "projects": {
+      "value": "200B+",
+      "label": "RMB Projects"
+    }
+  },
+  "competencies": {
+    "title": "Core Competencies",
+    "cards": {
+      "brokerage": {
+        "title": "Brokerage Transformation",
+        "description": "End-to-end lifecycle modernization from M&A to digital pivoting. Proven track record: HKD 1B+ annual revenue at peak."
+      },
+      "ai": {
+        "title": "AI-Native Execution",
+        "description": "We build, not just strategize. Claude, Cursor, and China's leading models deliver 10x development efficiency for partners."
+      },
+      "gr": {
+        "title": "Government Relations",
+        "description": "Elite access to decision-makers in Hong Kong and Mainland China. SFC/HKEX compliance expertise and SOE partnerships."
+      }
+    }
+  },
+  "heroSection": {
+    "headline": {
+      "part1": "From Global Excellence to",
+      "highlight1": "AI-Powered",
+      "part2": "Execution",
+      "highlight2": "Strategic Growth",
+      "part3": "in Greater China"
+    },
+    "subheadline": "Strategic navigation and accelerated market entry for sovereign funds and family offices seeking to establish presence in Greater China's complex financial landscape.",
+    "valueProps": {
+      "navigation": {
+        "title": "Strategic Navigation",
+        "desc": "Four decades of institutional memory guide your path through regulatory complexities and market dynamics"
+      },
+      "acceleration": {
+        "title": "Accelerated Landing",
+        "desc": "AI-enhanced operational efficiency reduces time-to-market by up to 70%"
+      }
+    },
+    "cta": {
+      "primary": "Begin Your Expansion",
+      "secondary": "Our Heritage"
+    },
+    "trust": {
+      "label": "Established Excellence",
+      "point1": "President's Club honoree, Honeywell Bull Global",
+      "point2": "AI-enhanced execution methodology"
+    },
+    "stats": {
+      "years": {
+        "value": "40",
+        "label": "Years of Excellence",
+        "context": "Since 1990, from Honeywell Bull to today"
+      },
+      "efficiency": {
+        "value": "70%",
+        "label": "Faster Time-to-Market",
+        "context": "Through AI-enhanced operational efficiency"
+      }
+    },
+    "endurance": {
+      "quote": "The discipline of completing 3-6 marathons annually reflects our approach to client partnerships—sustained commitment across the long haul.",
+      "badge": "Marathon-Grade Endurance"
+    }
+  },
+  "caseStudy": {
+    "eyebrow": "Track Record",
+    "title": "Beevest Securities: A Complete Turnaround Journey",
+    "subtitle": "From acquisition target to market leader—demonstrating end-to-end lifecycle mastery from M&A through digital transformation.",
+    "metrics": {
+      "title": "Performance Metrics",
+      "revenue": {
+        "value": "HKD 1B+",
+        "label": "Peak Annual Revenue",
+        "context": "Transformed from loss-making to market leader"
+      },
+      "turnaround": {
+        "value": "2.9 yrs",
+        "label": "Transformation Period",
+        "context": "2016-2018 complete lifecycle"
+      },
+      "traders": {
+        "value": "500+",
+        "label": "Active Quant Traders",
+        "context": "Vibrant trading ecosystem built"
+      },
+      "recognition": {
+        "value": "2",
+        "label": "HKEX Awards",
+        "context": "Stock Connect recognition 2017"
+      }
+    },
+    "insight": {
+      "title": "Strategic Insight",
+      "description": "The successful 'Boutique PB + Delta One' model triggered a sector-wide transformation wave across Hong Kong's financial industry."
+    },
+    "transformation": {
+      "title": "Transformation Timeline",
+      "phase1": {
+        "year": "2016",
+        "title": "Acquisition & Restructuring",
+        "description": "Identified Mega Securities as target, executed M&A, and initiated strategic pivot from legacy operations."
+      },
+      "phase2": {
+        "year": "2017",
+        "title": "Digital Infrastructure Build",
+        "description": "Deployed proprietary Behavioral Big Data models integrated with high-speed trading infrastructure."
+      },
+      "phase3": {
+        "year": "2017",
+        "title": "Market Recognition",
+        "description": "Earned two prestigious HKEX Stock Connect awards, validating the boutique prime brokerage model."
+      },
+      "phase4": {
+        "year": "2018",
+        "title": "Market Leadership",
+        "description": "Achieved HKD 1B+ annual revenue at peak, establishing Beevest as a quantitative trading powerhouse."
+      }
+    },
+    "impact": {
+      "quote": "This transformation exemplifies our end-to-end capabilities—from identifying acquisition targets to building category-leading operations.",
+      "attribution": "FAC Execution Framework"
+    },
+    "methodology": {
+      "step1": {
+        "title": "Strategic Assessment",
+        "desc": "Target identification and M&A execution"
+      },
+      "step2": {
+        "title": "Digital Pivot",
+        "desc": "Technology modernization and platform build"
+      },
+      "step3": {
+        "title": "Scale & Optimize",
+        "desc": "Ecosystem development and market expansion"
+      }
+    }
+  },
+  "partners": {
+    "eyebrow": "Strategic Network",
+    "title": "Institutional Alliances Across Three Continents",
+    "subtitle": "Deep-rooted partnerships with academic institutions, government entities, and international organizations that amplify our execution capabilities.",
+    "hkcas": {
+      "name": "HKCAS",
+      "fullName": "CAS Laboratory of Green Development International",
+      "description": "Founding member and Executive Director of this Hong Kong-based non-profit focused on sustainable development and cross-border investment facilitation.",
+      "relationship": "Founding Leadership",
+      "year": "Since 2019"
+    },
+    "suny": {
+      "name": "SUNY",
+      "fullName": "State University of New York System",
+      "description": "Academic partnership bridging elite research with institutional capital deployment, facilitating knowledge exchange between US and Asian markets.",
+      "relationship": "Academic Alliance",
+      "year": "Established 2013"
+    },
+    "cbpm": {
+      "name": "CBPM",
+      "fullName": "China Banknote Printing & Minting Corp.",
+      "description": "Strategic joint venture partnership with this state-owned enterprise, establishing CBPM-SMI as a cornerstone of China's banking self-service industry.",
+      "relationship": "SOE Joint Venture",
+      "year": "JV Formed 2005"
+    },
+    "valueProp": {
+      "title": "The Network Effect",
+      "description": "Our strategic alliances span government relations, academic research, and state-level partnerships—creating unique access points for international firms navigating Greater China.",
+      "tag1": "Government Relations",
+      "tag2": "Academic Excellence",
+      "tag3": "State-Level Access"
+    }
+  },
+  "contact": {
+    "eyebrow": "Get Started",
+    "title": "Begin Your Greater China Journey",
+    "subtitle": "Connect with our team to discuss your expansion objectives. Download our comprehensive whitepaper on Hong Kong market entry strategy.",
+    "whitepaper": {
+      "title": "Strategic Navigation: A Sovereign Fund's Guide to Hong Kong Market Entry",
+      "description": "A comprehensive analysis of regulatory frameworks, government relations strategies, and operational considerations for institutional investors entering Greater China.",
+      "note": "The whitepaper will be sent to your email upon form submission."
+    },
+    "trust": {
+      "security": "Data Security",
+      "response": "Response Time"
+    },
+    "form": {
+      "firstName": "First Name",
+      "firstNamePlaceholder": "Enter your first name",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Enter your last name",
+      "email": "Email Address",
+      "emailPlaceholder": "your.email@company.com",
+      "company": "Organization",
+      "companyPlaceholder": "Your organization name",
+      "title": "Job Title",
+      "titlePlaceholder": "e.g., Managing Director",
+      "region": "Region",
+      "regionPlaceholder": "Select your region",
+      "regions": {
+        "middleEast": "Middle East",
+        "southeastAsia": "Southeast Asia",
+        "europe": "Europe",
+        "americas": "Americas",
+        "other": "Other"
+      },
+      "investmentFocus": "Investment Focus",
+      "investmentFocusPlaceholder": "e.g., FinTech, Real Estate, PE/VC",
+      "message": "Additional Message",
+      "messagePlaceholder": "Tell us about your specific interests or questions...",
+      "whitepaper": {
+        "label": "Send me the Hong Kong Market Entry Strategy Whitepaper",
+        "description": "Receive our comprehensive guide via email immediately after submission."
+      },
+      "submit": "Request Consultation",
+      "submitting": "Submitting...",
+      "error": "An error occurred. Please try again.",
+      "privacy": "By submitting this form, you agree to our privacy policy and consent to being contacted regarding your inquiry."
+    },
+    "errors": {
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email address"
+    },
+    "success": {
+      "title": "Thank You",
+      "message": "Your inquiry has been received. Our team will review your submission and respond within 24 hours.",
+      "whitepaper": "The Hong Kong Market Entry Strategy whitepaper has been sent to your email.",
+      "reset": "Submit Another Inquiry"
+    }
+  },
+  "about": {
+    "eyebrow": "About Us",
+    "title": "A Strategic Collective of Elite Advisors",
+    "narrative": {
+      "paragraph1": "FAC is not merely a consultancy—it is a strategic collective led by Mark Lin, bringing together legal, compliance, FinTech, and government relations elites. Our collective energy emerges from the fusion of Mark's 40-year global perspective with team members' deep local execution capabilities.",
+      "paragraph2": "Each team member embodies the same 'engineer logic' and 'marathon resilience' that define our founder. We approach every client challenge with the precision of engineers and the endurance of marathoners—methodically breaking down complex Greater China market entry into achievable milestones.",
+      "paragraph3": "For Middle Eastern sovereign funds and Southeast Asian family offices, our collective offers something unique: institutional-grade execution backed by elite networks spanning Hong Kong regulatory bodies, Beijing policy circles, and the Hong Kong Science Park innovation ecosystem."
+    },
+    "values": {
+      "title": "Core Values",
+      "engineerLogic": "Engineer Logic: Breaking complexity into solvable components",
+      "marathonResilience": "Marathon Resilience: Sustained execution across multi-year engagements",
+      "institutionalMemory": "Institutional Memory: 40 years of navigating market transitions"
+    },
+    "composition": {
+      "title": "Team Composition",
+      "founder": {
+        "name": "Mark GC Lin",
+        "role": "Founder & Strategic Lead"
+      },
+      "legal": "Legal & Regulatory",
+      "compliance": "Compliance",
+      "fintech": "FinTech",
+      "govRelations": "Gov. Relations"
+    },
+    "experience": {
+      "years": "40+",
+      "label": "Years Combined"
+    },
+    "philosophy": {
+      "wisdom": {
+        "title": "Veteran Wisdom",
+        "description": "Four decades of institutional memory guide strategic decisions, helping clients avoid costly market entry pitfalls."
+      },
+      "logic": {
+        "title": "Engineer Logic",
+        "description": "Structured, systematic approach to complex challenges—breaking ambiguity into executable action plans."
+      },
+      "endurance": {
+        "title": "Marathon Resilience",
+        "description": "Long-term commitment to client success, maintaining execution stamina across multi-year engagements."
+      }
+    }
+  },
+  "team": {
+    "eyebrow": "Leadership",
+    "title": "Meet the Elite Advisory Collective",
+    "subtitle": "Deep expertise in legal, compliance, FinTech, and government relations—united by engineer logic and marathon resilience.",
+    "founderTitle": "Founder",
+    "advisorsTitle": "Strategic Advisors",
+    "clientValue": "Client Value",
+    "yearsExperience": "Years Experience",
+    "certifications": "Certifications",
+    "awards": "Honors & Awards",
+    "focusRegions": "Client Focus Regions",
+    "linkedin": "View LinkedIn Profile",
+    "showMore": "View Full Profile",
+    "showLess": "Show Less",
+    "expandingTeam": "Expanding Our Elite Collective",
+    "stayTuned": "New advisors with legal, compliance, and government backgrounds joining soon.",
+    "regions": {
+      "middle-east": "Middle East",
+      "southeast-asia": "Southeast Asia",
+      "europe": "Europe",
+      "americas": "Americas"
+    }
+  },
+  "adminLogin": {
+    "title": "Secure Access",
+    "subtitle": "Authorized personnel only. All access attempts are logged.",
+    "email": "Email Address",
+    "emailPlaceholder": "mark@hkfac.com",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "signIn": "Sign In",
+    "signingIn": "Signing in...",
+    "forgotPassword": "Forgot Password?",
+    "forgotTitle": "Password Recovery",
+    "forgotDescription": "Enter your admin email to receive a verification code.",
+    "sendCode": "Send Verification Code",
+    "sending": "Sending...",
+    "codeSent": "Verification code sent to mark@hkfac.com",
+    "verifyDescription": "Enter the 6-digit code sent to your email.",
+    "verificationCode": "Verification Code",
+    "codePlaceholder": "000000",
+    "verify": "Verify Code",
+    "verifying": "Verifying...",
+    "resetDescription": "Create a new secure password.",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "Min. 8 characters, 1 uppercase, 1 number",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Re-enter new password",
+    "resetPassword": "Reset Password",
+    "resetting": "Resetting...",
+    "resetSuccess": "Password reset successful. Redirecting to login...",
+    "firstLoginTitle": "Security Setup Required",
+    "firstLoginDescription": "As this is your first login, you must set a secure password before accessing the admin dashboard.",
+    "passwordChanged": "Password updated successfully!",
+    "redirecting": "Redirecting to dashboard...",
+    "setPassword": "Set Secure Password",
+    "updatePassword": "Update Password",
+    "updating": "Updating...",
+    "passwordRequirements": "Minimum 8 characters, 1 uppercase letter, 1 number",
+    "cannotSkip": "You cannot skip this step. Password change is required for security.",
+    "backToSite": "Back to main site",
+    "securityNote": "This is a secure administrative interface. Unauthorized access is prohibited and monitored.",
+    "errors": {
+      "invalidEmail": "Please enter a valid email address",
+      "unauthorized": "This email is not authorized to access the admin panel",
+      "invalidCredentials": "Invalid email or password",
+      "unknown": "An unexpected error occurred",
+      "sendFailed": "Failed to send verification code",
+      "invalidCode": "Invalid or expired verification code",
+      "passwordMismatch": "Passwords do not match",
+      "passwordTooShort": "Password must be at least 8 characters",
+      "passwordNoUppercase": "Password must contain at least one uppercase letter",
+      "passwordNoNumber": "Password must contain at least one number",
+      "resetFailed": "Failed to reset password",
+      "changeFailed": "Failed to change password"
+    }
+  },
+  "adminDashboard": {
+    "title": "Administrative Hub",
+    "subtitle": "Manage team members, view leads, and configure system settings.",
+    "loading": "Loading...",
+    "logout": "Logout",
+    "nav": {
+      "team": "Team Management",
+      "leads": "Lead Management",
+      "settings": "Settings"
+    },
+    "stats": {
+      "totalMembers": "Total Members",
+      "approvedIllustrations": "Approved Illustrations",
+      "pendingIllustrations": "Pending Illustrations",
+      "totalExperience": "Years Combined Experience"
+    },
+    "section": {
+      "team": "Team Members"
+    },
+    "founder": "Founder",
+    "addMember": "Add New Member",
+    "noIllustration": "No illustration",
+    "status": {
+      "approved": "Approved",
+      "pending": "Pending",
+      "generated": "Generated"
+    },
+    "guidelines": {
+      "title": "Illustration Style Guidelines",
+      "description": "Ensure all team member illustrations follow the FAC visual standards for brand consistency.",
+      "viewDoc": "View FAC_Illustration_Style.md"
+    }
+  },
+  "cta": {
+    "title": "Ready to Navigate Greater China?",
+    "description": "Partner with a 40-year veteran who combines the wisdom of experience with the agility of AI-enhanced execution.",
+    "button": "Schedule a Consultation"
+  },
+  "footer": {
+    "copyright": "© 2026 FAC (Hong Kong) Ltd. All rights reserved.",
+    "links": {
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "contact": "Contact"
+    }
+  }
+}
