@@ -1,39 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+import { isSupabaseConfigured } from "@/lib/supabase";
+import { getSupabaseAdmin } from "@/lib/supabase-admin";
+import { hashPassword } from "@/lib/password";
 
 const ADMIN_EMAIL = "mark@hkfac.com";
-
-// Simple password hashing (use bcrypt in production)
-function hashPassword(password: string): string {
-  // In production, use bcrypt.hash(password, 10)
-  // For demo, we'll use a simple hash
-  const crypto = require("crypto");
-  return crypto.createHash("sha256").update(password).digest("hex");
-}
 
 export async function POST(request: NextRequest) {
   try {
     const { email, code, newPassword } = await request.json();
 
-    // Validate email
     if (!email || email.toLowerCase() !== ADMIN_EMAIL) {
-      return NextResponse.json(
-        { error: "Unauthorized" },
-        { status: 403 }
-      );
+      return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
     }
 
-    // Validate password
     if (!newPassword || newPassword.length < 8) {
-      return NextResponse.json(
-        { error: "Password must be at least 8 characters" },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Password must be at least 8 characters" }, { status: 400 });
     }
 
-    // Verify code (skip if already verified in previous step)
     if (code && isSupabaseConfigured()) {
-      const { data: verification, error } = await supabase
+      const db = getSupabaseAdmin();
+      const { data: verification, error } = await db
         .from("verification_codes")
         .select("*")
         .eq("email", ADMIN_EMAIL)
@@ -44,16 +30,11 @@ export async function POST(request: NextRequest) {
         .single();
 
       if (error || !verification) {
-        return NextResponse.json(
-          { error: "Invalid verification" },
-          { status: 400 }
-        );
+        return NextResponse.json({ error: "Invalid verification" }, { status: 400 });
       }
 
-      // Check if code was used recently (within last 30 minutes)
-      const usedAt = new Date(verification.used_at);
-      const now = new Date();
-      const diffMinutes = (now.getTime() - usedAt.getTime()) / (1000 * 60);
+      const usedAt = new Date(verification.used_at as string);
+      const diffMinutes = (Date.now() - usedAt.getTime()) / (1000 * 60);
 
       if (diffMinutes > 30) {
         return NextResponse.json(
@@ -64,10 +45,10 @@ export async function POST(request: NextRequest) {
     }
 
     if (isSupabaseConfigured()) {
-      // Update password in database
-      const passwordHash = hashPassword(newPassword);
+      const db = getSupabaseAdmin();
+      const passwordHash = await hashPassword(newPassword);
 
-      const { error: updateError } = await supabase
+      const { error: updateError } = await db
         .from("admin_users")
         .update({
           password_hash: passwordHash,
@@ -80,19 +61,12 @@ export async function POST(request: NextRequest) {
         throw updateError;
       }
     } else {
-      // Demo mode
-      console.log("Demo mode: Password would be updated to:", newPassword);
+      console.log("Demo mode: Password would be updated");
     }
 
-    return NextResponse.json({
-      success: true,
-      message: "Password reset successfully",
-    });
+    return NextResponse.json({ success: true, message: "Password reset successfully" });
   } catch (error) {
     console.error("Reset password error:", error);
-    return NextResponse.json(
-      { error: "Failed to reset password" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to reset password" }, { status: 500 });
   }
 }

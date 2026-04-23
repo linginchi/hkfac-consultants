@@ -1,18 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+import { isSupabaseConfigured } from "@/lib/supabase";
+import { getSupabaseAdmin } from "@/lib/supabase-admin";
 
 export async function GET(request: NextRequest) {
   const sessionToken = request.cookies.get("admin_session")?.value;
 
   if (!sessionToken) {
-    return NextResponse.json(
-      { error: "No session" },
-      { status: 401 }
-    );
+    return NextResponse.json({ error: "No session" }, { status: 401 });
   }
 
   if (!isSupabaseConfigured()) {
-    // Demo mode - accept any session
     return NextResponse.json({
       authenticated: true,
       email: "mark@hkfac.com",
@@ -21,8 +18,9 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // Verify session
-    const { data: session, error } = await supabase
+    const db = getSupabaseAdmin();
+
+    const { data: session, error } = await db
       .from("admin_sessions")
       .select("*, admin_users (email, is_first_login)")
       .eq("token", sessionToken)
@@ -30,22 +28,18 @@ export async function GET(request: NextRequest) {
       .single();
 
     if (error || !session) {
-      return NextResponse.json(
-        { error: "Invalid session" },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
+
+    const adminUsers = session.admin_users as { email: string; is_first_login: boolean };
 
     return NextResponse.json({
       authenticated: true,
-      email: session.admin_users.email,
-      isFirstLogin: session.admin_users.is_first_login,
+      email: adminUsers.email,
+      isFirstLogin: adminUsers.is_first_login,
     });
   } catch (error) {
     console.error("Session check error:", error);
-    return NextResponse.json(
-      { error: "Internal server error" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

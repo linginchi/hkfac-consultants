@@ -6,6 +6,36 @@ import { routing } from "./i18n/routing";
 // Create the next-intl middleware
 const intlMiddleware = createMiddleware(routing);
 
+/** Map Accept-Language to next-intl locale (en | zh-HK | zh-CN). */
+function negotiateLocale(request: NextRequest): string {
+  const header = request.headers.get("accept-language");
+  if (!header) {
+    return routing.defaultLocale;
+  }
+
+  const tags = header
+    .split(",")
+    .map((part) => part.trim().split(";")[0]?.toLowerCase())
+    .filter(Boolean) as string[];
+
+  for (const tag of tags) {
+    if (tag.startsWith("zh-hk") || tag === "zh-tw" || tag.startsWith("yue")) {
+      return "zh-HK";
+    }
+    if (tag.startsWith("zh-cn") || tag === "zh-hans") {
+      return "zh-CN";
+    }
+  }
+
+  for (const tag of tags) {
+    if (tag === "zh" || tag.startsWith("zh-")) {
+      return "zh-HK";
+    }
+  }
+
+  return routing.defaultLocale;
+}
+
 // Admin routes that require authentication
 const ADMIN_PROTECTED_ROUTES = [
   "/admin/dashboard",
@@ -22,6 +52,13 @@ const ADMIN_PUBLIC_ROUTES = [
 
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  if (pathname === "/") {
+    const locale = negotiateLocale(request);
+    const url = request.nextUrl.clone();
+    url.pathname = `/${locale}`;
+    return NextResponse.redirect(url);
+  }
 
   // Check if this is an admin route
   const isAdminRoute = pathname.startsWith("/admin") || 

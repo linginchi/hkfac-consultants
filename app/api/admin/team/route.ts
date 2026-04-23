@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+import { isSupabaseConfigured } from "@/lib/supabase";
+import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { getAdminSession } from "@/lib/admin-session";
 import type { TeamMemberType } from "@/lib/team";
 
@@ -92,7 +93,8 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const includeInactive = searchParams.get("all") === "1";
 
-  let q = supabase.from("team_members").select("*").order("display_order", { ascending: true }).order("last_name", { ascending: true });
+  const db = getSupabaseAdmin();
+  let q = db.from("team_members").select("*").order("display_order", { ascending: true }).order("last_name", { ascending: true });
   if (!includeInactive) {
     q = q.eq("is_active", true);
   }
@@ -118,6 +120,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    const db = getSupabaseAdmin();
     const body = await request.json();
     const row = normalizePayload(body);
     const err = validateMember(row);
@@ -156,7 +159,7 @@ export async function POST(request: NextRequest) {
       joined_fac_date: row.joined_fac_date,
     };
 
-    const { data, error } = await supabase.from("team_members").insert([insertPayload]).select().single();
+    const { data, error } = await db.from("team_members").insert([insertPayload]).select().single();
 
     if (error) {
       console.error("admin team create:", error);

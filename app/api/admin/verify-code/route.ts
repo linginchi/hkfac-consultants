@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+import { isSupabaseConfigured } from "@/lib/supabase";
+import { getSupabaseAdmin } from "@/lib/supabase-admin";
 
 const ADMIN_EMAIL = "mark@hkfac.com";
 
@@ -24,8 +25,8 @@ export async function POST(request: NextRequest) {
     }
 
     if (isSupabaseConfigured()) {
-      // Verify code from database
-      const { data: verification, error } = await supabase
+      const db = getSupabaseAdmin();
+      const { data: verification, error } = await db
         .from("verification_codes")
         .select("*")
         .eq("email", ADMIN_EMAIL)
@@ -43,8 +44,7 @@ export async function POST(request: NextRequest) {
         );
       }
 
-      // Mark code as used
-      await supabase
+      await db
         .from("verification_codes")
         .update({ used: true, used_at: new Date().toISOString() })
         .eq("id", verification.id);

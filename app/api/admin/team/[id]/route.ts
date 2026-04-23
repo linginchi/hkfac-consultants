@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+import { isSupabaseConfigured } from "@/lib/supabase";
+import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { getAdminSession } from "@/lib/admin-session";
 import type { TeamMemberType } from "@/lib/team";
 
@@ -124,8 +125,9 @@ export async function GET(
     return NextResponse.json({ error: "Supabase not configured" }, { status: 503 });
   }
 
+  const db = getSupabaseAdmin();
   const { id } = await params;
-  const { data, error } = await supabase.from("team_members").select("*").eq("id", id).maybeSingle();
+  const { data, error } = await db.from("team_members").select("*").eq("id", id).maybeSingle();
 
   if (error) {
     return NextResponse.json({ error: "Failed to load member" }, { status: 500 });
@@ -150,6 +152,7 @@ export async function PATCH(
     return NextResponse.json({ error: "Supabase not configured" }, { status: 503 });
   }
 
+  const db = getSupabaseAdmin();
   const { id } = await params;
 
   try {
@@ -168,7 +171,7 @@ export async function PATCH(
     }
     updatePayload.updated_at = new Date().toISOString();
 
-    const { data, error } = await supabase.from("team_members").update(updatePayload).eq("id", id).select().single();
+    const { data, error } = await db.from("team_members").update(updatePayload).eq("id", id).select().single();
 
     if (error) {
       console.error("admin team update:", error);
@@ -195,8 +198,9 @@ export async function DELETE(
     return NextResponse.json({ error: "Supabase not configured" }, { status: 503 });
   }
 
+  const db = getSupabaseAdmin();
   const { id } = await params;
-  const { error } = await supabase.from("team_members").delete().eq("id", id);
+  const { error } = await db.from("team_members").delete().eq("id", id);
 
   if (error) {
     console.error("admin team delete:", error);

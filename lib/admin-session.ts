@@ -1,5 +1,6 @@
 import type { NextRequest } from "next/server";
-import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+import { isSupabaseConfigured } from "@/lib/supabase";
+import { getSupabaseAdmin } from "@/lib/supabase-admin";
 
 export type AdminSessionResult =
   | { ok: true; userId: string; demo: boolean }
@@ -15,7 +16,9 @@ export async function getAdminSession(request: NextRequest): Promise<AdminSessio
     return { ok: true, userId: "demo", demo: true };
   }
 
-  const { data, error } = await supabase
+  const db = getSupabaseAdmin();
+
+  const { data, error } = await db
     .from("admin_sessions")
     .select("user_id")
     .eq("token", token)

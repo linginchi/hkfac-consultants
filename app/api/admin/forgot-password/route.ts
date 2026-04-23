@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { supabase, isSupabaseConfigured } from "@/lib/supabase";
+import { isSupabaseConfigured } from "@/lib/supabase";
+import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { resend, isResendConfigured } from "@/lib/resend";
 import crypto from "crypto";
 
@@ -88,8 +89,8 @@ export async function POST(request: NextRequest) {
 
     // Store verification code
     if (isSupabaseConfigured()) {
-      // Store in database
-      await supabase.from("verification_codes").insert({
+      const db = getSupabaseAdmin();
+      await db.from("verification_codes").insert({
         email: ADMIN_EMAIL,
         code,
         expires_at: expiresAt.toISOString(),
