@@ -9,6 +9,7 @@ const intlMiddleware = createMiddleware(routing);
 // Admin routes that require authentication
 const ADMIN_PROTECTED_ROUTES = [
   "/admin/dashboard",
+  "/admin/team",
   "/admin/leads",
   "/admin/settings",
 ];

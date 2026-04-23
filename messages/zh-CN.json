@@ -399,6 +399,7 @@
     "loading": "载入中...",
     "logout": "登出",
     "nav": {
+      "overview": "总览",
       "team": "团队管理",
       "leads": "潜在客户管理",
       "settings": "设置"
@@ -424,7 +425,85 @@
       "title": "插画风格规范",
       "description": "确保所有团队成员插画均遵循FAC视觉标准，以保持品牌一致性。",
       "viewDoc": "查看 FAC_Illustration_Style.md"
+    },
+    "openTeamCrud": "打开完整顾问资料管理"
+  },
+  "adminTeam": {
+    "title": "顾问与团队资料",
+    "subtitle": "对 team_members 表进行新增、读取、更新与删除（前台顾问列表）。",
+    "loading": "载入中…",
+    "addMember": "新增成员",
+    "edit": "编辑",
+    "delete": "删除",
+    "save": "保存",
+    "saving": "保存中…",
+    "cancel": "取消",
+    "empty": "尚无团队成员，请新增。",
+    "confirmDelete": "确定永久删除 {name}？此操作无法还原。",
+    "active": { "yes": "显示", "no": "隐藏" },
+    "table": {
+      "name": "姓名",
+      "type": "类型",
+      "roleEn": "职称（英）",
+      "order": "排序",
+      "active": "状态",
+      "actions": "操作"
+    },
+    "modal": {
+      "createTitle": "新增团队成员",
+      "editTitle": "编辑团队成员"
+    },
+    "sections": {
+      "basic": "基本资料",
+      "roles": "职称（各语言）",
+      "bio": "简介（最多 200 字）",
+      "valueProp": "价值主张（最多 150 字）",
+      "optional": "详细描述（选填）",
+      "illustration": "插画",
+      "meta": "元数据与标签"
+    },
+    "fields": {
+      "firstName": "名",
+      "lastName": "姓",
+      "email": "邮箱",
+      "linkedin": "LinkedIn 链接",
+      "roleEn": "职称 — 英文",
+      "roleZhHk": "职称 — 繁体（香港）",
+      "roleZhCn": "职称 — 简体",
+      "bio_en": "简介 — 英文",
+      "bio_zh_hk": "简介 — 繁体（香港）",
+      "bio_zh_cn": "简介 — 简体",
+      "value_prop_en": "价值主张 — 英文",
+      "value_prop_zh_hk": "价值主张 — 繁体（香港）",
+      "value_prop_zh_cn": "价值主张 — 简体",
+      "description_en": "描述 — 英文",
+      "description_zh_hk": "描述 — 繁体（香港）",
+      "description_zh_cn": "描述 — 简体",
+      "illustrationUrl": "插画 URL",
+      "illustrationStatus": "插画状态",
+      "memberType": "成员类型",
+      "displayOrder": "显示顺序",
+      "yearsExperience": "年资",
+      "joinedFacDate": "加入 FAC 日期",
+      "isActive": "于前台显示",
+      "expertiseAreas": "专长领域",
+      "certifications": "专业资格",
+      "awards": "奖项",
+      "education": "学历",
+      "clientRegions": "客户地区"
+    },
+    "placeholders": {
+      "commaSeparated": "以逗号分隔，例如：FinTech、Legal"
+    },
+    "errors": {
+      "loadFailed": "无法载入团队成员。",
+      "saveFailed": "无法保存，请检查字段后重试。",
+      "deleteFailed": "无法删除此成员。"
     }
+  },
+  "adminLeads": {
+    "title": "潜在客户管理",
+    "body": "列表界面将在后续版本加入。现在可在 Supabase Table Editor → public.leads 查看提交记录。"
   },
   "cta": {
     "title": "准备进军大中华区？",

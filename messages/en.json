@@ -399,6 +399,7 @@
     "loading": "Loading...",
     "logout": "Logout",
     "nav": {
+      "overview": "Overview",
       "team": "Team Management",
       "leads": "Lead Management",
       "settings": "Settings"
@@ -424,7 +425,85 @@
       "title": "Illustration Style Guidelines",
       "description": "Ensure all team member illustrations follow the FAC visual standards for brand consistency.",
       "viewDoc": "View FAC_Illustration_Style.md"
+    },
+    "openTeamCrud": "Open full team CRUD"
+  },
+  "adminTeam": {
+    "title": "Advisor & team data",
+    "subtitle": "Create, read, update, and delete records in team_members (public site roster).",
+    "loading": "Loading…",
+    "addMember": "Add member",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "empty": "No team members yet. Add one to get started.",
+    "confirmDelete": "Permanently delete {name}? This cannot be undone.",
+    "active": { "yes": "Active", "no": "Hidden" },
+    "table": {
+      "name": "Name",
+      "type": "Type",
+      "roleEn": "Role (EN)",
+      "order": "Order",
+      "active": "Status",
+      "actions": "Actions"
+    },
+    "modal": {
+      "createTitle": "New team member",
+      "editTitle": "Edit team member"
+    },
+    "sections": {
+      "basic": "Basic",
+      "roles": "Titles (locale)",
+      "bio": "Bio (max 200 chars)",
+      "valueProp": "Value proposition (max 150 chars)",
+      "optional": "Long descriptions (optional)",
+      "illustration": "Illustration",
+      "meta": "Metadata & tags"
+    },
+    "fields": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "linkedin": "LinkedIn URL",
+      "roleEn": "Role — English",
+      "roleZhHk": "Role — Traditional Chinese (HK)",
+      "roleZhCn": "Role — Simplified Chinese",
+      "bio_en": "Bio — English",
+      "bio_zh_hk": "Bio — Traditional Chinese (HK)",
+      "bio_zh_cn": "Bio — Simplified Chinese",
+      "value_prop_en": "Value prop — English",
+      "value_prop_zh_hk": "Value prop — Traditional Chinese (HK)",
+      "value_prop_zh_cn": "Value prop — Simplified Chinese",
+      "description_en": "Description — English",
+      "description_zh_hk": "Description — Traditional Chinese (HK)",
+      "description_zh_cn": "Description — Simplified Chinese",
+      "illustrationUrl": "Illustration URL",
+      "illustrationStatus": "Illustration status",
+      "memberType": "Member type",
+      "displayOrder": "Display order",
+      "yearsExperience": "Years experience",
+      "joinedFacDate": "Joined FAC (date)",
+      "isActive": "Visible on public site",
+      "expertiseAreas": "Expertise areas",
+      "certifications": "Certifications",
+      "awards": "Awards",
+      "education": "Education",
+      "clientRegions": "Client regions"
+    },
+    "placeholders": {
+      "commaSeparated": "Comma-separated, e.g. FinTech, Legal"
+    },
+    "errors": {
+      "loadFailed": "Could not load team members.",
+      "saveFailed": "Could not save. Check fields and try again.",
+      "deleteFailed": "Could not delete this member."
     }
+  },
+  "adminLeads": {
+    "title": "Lead management",
+    "body": "A leads table UI will be added in a follow-up. For now, view submissions in the Supabase Table Editor → public.leads."
   },
   "cta": {
     "title": "Ready to Navigate Greater China?",

@@ -7,60 +7,7 @@ import { useRouter } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { motion } from "framer-motion";
 import { TeamMember, getTeamMembers } from "@/lib/team";
-
-// Admin Dashboard Header
-function DashboardHeader({ onLogout }: { onLogout: () => void }) {
-  const t = useTranslations("adminDashboard");
-  const locale = useLocale();
-
-  return (
-    <header className="bg-navy-900 border-b border-slate-700">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center border border-gold/30">
-              <span className="text-gold font-bold">FAC</span>
-            </div>
-            <div>
-              <span className="text-slate-50 font-semibold">Admin</span>
-              <span className="text-xs text-slate-400 block">mark@hkfac.com</span>
-            </div>
-          </div>
-
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
-            <Link
-              href="/admin/dashboard"
-              locale={locale}
-              className="text-sm text-slate-300 hover:text-cyan transition-colors"
-            >
-              {t("nav.team")}
-            </Link>
-            <Link
-              href="/admin/leads"
-              locale={locale}
-              className="text-sm text-slate-300 hover:text-cyan transition-colors"
-            >
-              {t("nav.leads")}
-            </Link>
-          </nav>
-
-          {/* Logout */}
-          <button
-            onClick={onLogout}
-            className="flex items-center gap-2 text-sm text-slate-400 hover:text-red-400 transition-colors"
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-            </svg>
-            {t("logout")}
-          </button>
-        </div>
-      </div>
-    </header>
-  );
-}
+import { AdminHeader } from "@/components/admin/AdminHeader";
 
 // Team Member Management Card
 function TeamMemberCard({
@@ -156,7 +103,6 @@ export default function AdminDashboardPage() {
 
   const [members, setMembers] = useState<TeamMember[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   // Check authentication
   useEffect(() => {
@@ -187,15 +133,13 @@ export default function AdminDashboardPage() {
   };
 
   const handleEditMember = (member: TeamMember) => {
-    setSelectedMember(member);
-    // TODO: Open edit modal
-    alert(`Edit member: ${member.full_name}\n\nFeature coming soon:\n- Update biography\n- Change illustration\n- Edit certifications`);
+    router.push(`/${locale}/admin/team?edit=${member.id}`);
   };
 
   if (loading) {
     return (
       <div className="min-h-screen bg-deep-navy">
-        <DashboardHeader onLogout={handleLogout} />
+        <AdminHeader onLogout={handleLogout} active="dashboard" />
         <div className="flex items-center justify-center h-[calc(100vh-64px)]">
           <div className="animate-pulse text-slate-400">{t("loading")}</div>
         </div>
@@ -205,13 +149,22 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="min-h-screen bg-deep-navy">
-      <DashboardHeader onLogout={handleLogout} />
+      <AdminHeader onLogout={handleLogout} active="dashboard" />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Page Header */}
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-slate-50 mb-2">{t("title")}</h1>
-          <p className="text-slate-400">{t("subtitle")}</p>
+        <div className="mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div>
+            <h1 className="text-2xl font-bold text-slate-50 mb-2">{t("title")}</h1>
+            <p className="text-slate-400">{t("subtitle")}</p>
+          </div>
+          <Link
+            href="/admin/team"
+            locale={locale}
+            className="inline-flex items-center justify-center px-4 py-2 rounded-lg border border-cyan/50 text-cyan text-sm font-medium hover:bg-cyan/10 transition-colors"
+          >
+            {t("openTeamCrud")}
+          </Link>
         </div>
 
         {/* Quick Stats */}
@@ -243,15 +196,16 @@ export default function AdminDashboardPage() {
         {/* Team Members Grid */}
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-lg font-semibold text-slate-50">{t("section.team")}</h2>
-          <button
-            onClick={() => alert("Add new member - Coming soon")}
+          <Link
+            href="/admin/team"
+            locale={locale}
             className="flex items-center gap-2 px-4 py-2 bg-cyan hover:bg-cyan-dark text-navy-900 text-sm font-medium rounded-lg transition-colors"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
             {t("addMember")}
-          </button>
+          </Link>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
