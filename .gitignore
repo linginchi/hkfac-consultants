@@ -9,6 +9,7 @@ node_modules/
 
 # Next.js build output
 .next/
+.open-next/
 out/
 
 # Production build
@@ -46,6 +47,9 @@ coverage/
 
 # Vercel
 .vercel
+
+# Wrangler local state
+.wrangler/
 
 # TypeScript
 *.tsbuildinfo

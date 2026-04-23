@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
 import {
@@ -59,10 +60,13 @@ function MemberCard({
 
         {/* Illustration or Placeholder */}
         {member.illustration_url && member.illustration_status === "approved" ? (
-          <img
+          <Image
             src={member.illustration_url}
             alt={member.full_name}
-            className="w-full h-full object-cover object-center"
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 768px) 100vw, 480px"
+            priority={isFounder}
           />
         ) : (
           <div className="text-center p-6">

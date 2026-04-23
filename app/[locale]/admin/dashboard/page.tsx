@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import { Link } from "@/i18n/navigation";
@@ -82,10 +83,13 @@ function TeamMemberCard({
         {/* Illustration Placeholder */}
         <div className="w-20 h-20 bg-slate-700 rounded-lg flex items-center justify-center flex-shrink-0">
           {member.illustration_url && member.illustration_status === "approved" ? (
-            <img
+            <Image
               src={member.illustration_url}
               alt={member.full_name}
-              className="w-full h-full object-cover rounded-lg"
+              width={80}
+              height={80}
+              className="object-cover rounded-lg"
+              sizes="80px"
             />
           ) : (
             <div className="text-center">
