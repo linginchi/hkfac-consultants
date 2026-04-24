@@ -1,12 +1,11 @@
 /**
  * After OpenNext build: copy edge files from public/ into .open-next output.
  *
- * Do NOT write .open-next/_worker.js or functions/[[path]].js that re-export worker.js:
- * Cloudflare Pages will run a second esbuild (Pages Functions / wrangler 3) on _worker.js,
- * which cannot bundle the prebuilt OpenNext worker (Node built-ins → build failure).
- * The real entry is OpenNext's .open-next/worker.js; pair with root wrangler.json pages_build_output_dir.
+ * Do NOT add a tiny _worker.js that only re-exports worker.js (that pattern triggers
+ * a second esbuild and fails). We copy the prebuilt .open-next/worker.js byte-for-byte
+ * to _worker.js so Cloudflare Pages can pick up the same bundle as the SSR entry.
  */
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -38,4 +37,18 @@ for (const name of files) {
     writeFileSync(join(assetsDir, name), content, "utf8");
   }
   console.log(`Copied public/${name} -> .open-next/${name}` + (existsSync(assetsDir) ? ` and .open-next/assets/${name}` : ""));
+}
+
+const workerPath = join(outRoot, "worker.js");
+const underscoreWorkerPath = join(outRoot, "_worker.js");
+if (existsSync(workerPath)) {
+  copyFileSync(workerPath, underscoreWorkerPath);
+  console.log("Copied .open-next/worker.js -> .open-next/_worker.js");
+}
+
+const routesRoot = join(outRoot, "_routes.json");
+const routesInAssets = join(assetsDir, "_routes.json");
+if (!existsSync(routesRoot) && existsSync(routesInAssets)) {
+  copyFileSync(routesInAssets, routesRoot);
+  console.log("Copied .open-next/assets/_routes.json -> .open-next/_routes.json");
 }
