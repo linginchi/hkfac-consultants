@@ -7,6 +7,12 @@ initOpenNextCloudflareForDev();
 const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
+  output: "standalone",
+  serverExternalPackages: [
+    "bcryptjs",
+    "@supabase/supabase-js",
+    "resend",
+  ],
   images: {
     remotePatterns: [
       {

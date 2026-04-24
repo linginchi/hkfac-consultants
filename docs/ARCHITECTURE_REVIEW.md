@@ -29,33 +29,29 @@ flowchart LR
 | 層 | 要點 |
 |----|------|
 | **i18n** | `next-intl`，`localePrefix: "always"`；根路徑 `pathname === "/"` 在 [`middleware.ts`](../middleware.ts) 內**固定** `redirect` 至 `/en`（與行銷「預設英文」策略一致，非每請求做 `Accept-Language` 協商）。 |
-| **託管** | OpenNext（[`open-next.config.ts`](../open-next.config.ts)）。兩份 Wrangler 配置見下節 **Cloudflare 託管與 HTML 404**。`public/_headers` 靜態快取等。 |
+| **託管** | **僅** Cloudflare **Pages** + OpenNext（[`open-next.config.ts`](../open-next.config.ts)）；倉內以單一 [`wrangler.json`](../wrangler.json) 聲明 `pages_build_output_dir` 與執行相容層。`public/_headers` 靜態快取等。 |
 | **公開讀/寫** | Anon + RLS：前台讀 `team_members`（活躍行）、聯絡寫入 `leads`（`app/api/contact` + `lib/contact-rate-limit` 進程內限流）。 |
 | **後台** | `admin_session` Cookie + 路由內邏輯 + **僅服務端** `SUPABASE_SERVICE_ROLE_KEY` 寫庫。RLS 無法讀 Cookie；敏感表依「無 public policy + service 繞過」收斂。 |
 | **密碼** | `bcryptjs`（`lib/password.ts`）；`admin_users.password_hash` 應只存 bcrypt；可用 `npm run hash:admin-password` 產生哈希。 |
 
-## 2.1 Cloudflare 託管與 HTML 404（邊緣層，對齊 gstack）
+## 2.1 Cloudflare 託管與邊緣層（僅 Pages，對齊 gstack）
 
-**觀測（生產，`curl` HEAD）：** `/` → `301` 到 `/en`（`public/_redirects` 或邊緣層可見）；**`/en` → `404`**。這與「靜態資產上傳成功、但 **OpenNext 的 `worker.js` 未作為處理 HTML/SSR 的 Worker 掛在 Pages Git 產出上**」一致；Next 的 `middleware` 與 `app/[locale]` 若未在 Worker 內執行，不會產生 HTML，僅有靜態路徑時表現為 404。
+**生產託管決策：** 本專案**只**使用 **Cloudflare Pages**（Repository 連線建置 + `pages.dev` / 自訂網域），**不**在倉庫內維護與生產並行的 **獨立 `wrangler deploy` Workers** 管線（歷史曾用 `wrangler.deploy.json` / `deploy:worker` 的作法已從倉庫移除，避免雙重來源與與你方流程衝突）。
 
 | 檔案 | 用途 |
 |------|------|
-| [`wrangler.json`](../wrangler.json) | **僅** `name` + `pages_build_output_dir: ".open-next"`。給 **Cloudflare Pages**（Git 整合）讀建置產出目錄。與同檔內的 `main` + `pages_build_output_dir` 互斥，故不可二合一。 |
-| [`wrangler.deploy.json`](../wrangler.deploy.json) | **Workers** 部署專用：`main` → `.open-next/worker.js`、`assets` → `.open-next/assets`、`nodejs_compat` 等。**OpenNext 官方敘事以 Worker 運行全站**；用此檔執行 `wrangler deploy` 才是完整管線。 |
+| [`wrangler.json`](../wrangler.json) | 給 **Cloudflare Pages** 作為專案級設定之憑據：至少含 `name`（與儀表板專案名一致）、`pages_build_output_dir: ".open-next"`。另含 **`compatibility_date`** 與 **`compatibility_flags`**（含 `nodejs_compat`），與 [官方 Pages 說明](https://developers.cloudflare.com/pages/functions/wrangler-configuration/) 一致。 |
+| 禁與併寫 | **勿**在同一檔內同時寫 `main` 與 `pages_build_output_dir`（[Cloudflare 驗證會失敗](https://developers.cloudflare.com/pages/platform/changelog)）；**勿**在 Pages 用帶有 `ASSETS` 的 `assets` 綁定名導致保留名衝突。 |
 
-**建議的生產發佈（二選一或併用）：**
+**HTML / 404 與 OpenNext：** 建置命令須產生完整 **`.open-next`**（含 `worker.js` 與靜態產物），在 Pages 上應當以 OpenNext 適配層**處理** HTML，而非單有靜態。若歷史曾見 `/_next/static/...` 有檔而 `/en` 等退回 404，屬**邊緣掛載與儀表板**問題；請在 Pages 專案核對建置/執行 **nodejs_compat**、**Build 命令** 為 `npm run pages:build` 或 `build:cf`、以及變量是否完整。
 
-1. **Workers（推薦，解決 /en 404）**  
-   - 本地或 CI：先 [`npm run build:cf`](../package.json)，再 `npm run deploy:worker`（`wrangler deploy --config wrangler.deploy.json`）。  
-   - 帳戶已登入 Wrangler 或設 `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID`。  
-   - 在 Cloudflare 儀表板把**自定義網域**或流量指向該 **Worker**（`*.workers.dev` 或綁定域名），不要只依賴 **Pages 專案**若該專案僅上傳靜態。  
+**勿在產出內**自造只 `re-export` 的 `_worker.js`：曾導致 Pages 對其**二次 esbuild**、內建 Node 模組解析失敗。
 
-2. **僅 Pages Git 建置**  
-   - 可繼續產生 `.open-next` 用於快取/預覽，但若平台上仍不掛 `worker.js`，**HTML 路徑仍可能 404**；此時應以 Cloudflare 文檔或 **GitHub Actions** 改為併用 `deploy:worker`（見 [`.github/workflows/deploy-opennext.yml`](../.github/workflows/deploy-opennext.yml)）。  
-
-3. **勿**在產出目錄內自造 `_worker.js` 僅 `export` 自 `worker.js`：曾觸發 **Pages 對 `_worker.js` 二次 esbuild**，導致 `async_hooks` / `fs` 等 Node 內建解析失敗。  
-
-4. **GitHub Actions**：`deploy-opennext.yml` 在 `push` 至 `main` 時可部署 Worker；需設定 Secrets：`CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`；**建置階段**內聯的 `NEXT_PUBLIC_SUPABASE_*` 建議以 Secrets 注入。  
+| 實作檢查 |
+|----------|
+| 建置：`opennextjs-cloudflare build --config wrangler.json`（[package.json](../package.json) 內 `build:cf` / `pages:build`），讓 OpenNext 與 Wrangler 讀取根目錄 [`wrangler.json`](../wrangler.json) 的 `compatibility_*`（含 `nodejs_compat`）。 |
+| 佈署：由 **Git 推送觸發 Pages 建置** 即可；不提交 `.open-next/`。 |
+| 不建議：在倉庫內**另開**一條僅 `wrangler deploy` 的生產腳本與專屬 `wrangler.deploy.*`，與本節「僅 Pages」衝突。 |
 
 ## 3. 風險與缺口（精簡）
 
@@ -64,14 +60,14 @@ flowchart LR
 | 限流 | 聯絡表單已加 **郵件 + 客戶端 IP** 的滾動 1h 次數；**非分佈式**，多實例下應在 **Cloudflare 儀表板** 加 **Rate rules / WAF** 作為權威。 |
 | 會話 | `ADMIN_SESSION_SECRET` 在示例有、**尚未**用於簽名 Cookie；若需降低 middleware 內部對 `verify-session` 的 `fetch` 次數，可另行設計簽名會話（屬行為變更）。 |
 | 可觀測性 | 多處 `console.*`；上線排障以 **Cloudflare / Supabase 日誌** 為主。 |
-| 邊緣 HTML | 若自託管未經 **完整 Worker 部署**（`worker.js` + `ASSETS`），**HTML 與 RSC 路由不可達**；見 §2.1。 |
+| 邊緣 HTML | 生產應**僅**透過 **Pages + 完整 `build:cf` 產出**；儀表板建置/執行設定錯位時，HTML 與 RSC 可表現為 404；見 §2.1。 |
 
 ## 4. 生產運維驗證清單（`ops-verify`）
 
 請在佈署環境**逐項手動**勾選（自動化帳密無法代填）。
 
-- [ ] **Cloudflare**（**Workers** 或 Pages 的 Build/Runtime 變量）：`NEXT_PUBLIC_SUPABASE_URL`、`NEXT_PUBLIC_SUPABASE_ANON_KEY`、`SUPABASE_SERVICE_ROLE_KEY`、`RESEND_API_KEY`（如用郵件）、`NODE_VERSION` 與 `engines` 一致。  
-- [ ] **生產 HTML**：確認流量指向 **已部署 OpenNext 的 Worker**；`curl -I https://<你的站>/en` 應 **非** 404。  
+- [ ] **Cloudflare**（**Pages** 建置/執行變量）：`NEXT_PUBLIC_SUPABASE_URL`、`NEXT_PUBLIC_SUPABASE_ANON_KEY`、`SUPABASE_SERVICE_ROLE_KEY`、`RESEND_API_KEY`（如用郵件）、`NODE_VERSION` 與 `engines` 一致。  
+- [ ] **生產 HTML**：`curl -I https://<你的站>/en` 應 **非** 404；OpenNext 由 **Pages 建置** 掛上（見 §2.1 與 [`wrangler.json`](../wrangler.json) 相容層）。  
 - [ ] **嚴禁** 將 `SUPABASE_SERVICE_ROLE_KEY` 設成 `NEXT_PUBLIC_*` 或客戶端讀取。  
 - [ ] **Supabase SQL Editor**：已執行倉內 `supabase-rls-hardening.sql`（及既有 `leads` 的 anon insert 策略需仍存在）。  
 - [ ] **登入**：`/en/admin/login`（或 `zh-HK` / `zh-CN`）+ 帳密，後台導向正常；登出清 Cookie。  
@@ -95,10 +91,4 @@ npm run build:cf
 
 （`build:cf` 需能解析 Cloudflare 建置產物；Windows 上 OpenNext 或提示建議用 WSL，屬上游提示。）  
 
-**部署至 Workers（生產 HTML 可達）：** 需已 `wrangler login` 或 CI Secrets，執行：
-
-```bash
-npm run deploy:worker
-```
-
-**勿**在缺少憑證的環境強制推送後期待 Pages 單階段產生完整 SSR，見 §2.1。
+**生產佈署**由 **Cloudflare Pages**（與遠端 Git 連線）在推送後執行 `pages:build` / `build:cf` 路徑；參考 §2.1 的 `wrangler.json` 與環境變量清單。
