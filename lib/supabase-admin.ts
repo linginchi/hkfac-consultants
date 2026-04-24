@@ -1,5 +1,5 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { supabase, isSupabaseConfigured } from "./supabase";
+import { getSupabaseUrl, supabase, isSupabaseConfigured } from "./supabase";
 
 /**
  * Service role key bypasses RLS. Use only in server-side API routes / Server Actions.
@@ -22,11 +22,9 @@ export function getSupabaseAdmin(): SupabaseClient {
   }
   if (isServiceRoleConfigured()) {
     if (!_adminClient) {
-      _adminClient = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.SUPABASE_SERVICE_ROLE_KEY!,
-        { auth: { persistSession: false, autoRefreshToken: false } }
-      );
+      _adminClient = createClient(getSupabaseUrl(), process.env.SUPABASE_SERVICE_ROLE_KEY!, {
+        auth: { persistSession: false, autoRefreshToken: false },
+      });
     }
     return _adminClient;
   }

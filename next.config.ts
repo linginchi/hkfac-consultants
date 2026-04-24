@@ -16,6 +16,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Backup redirect if middleware/static routing behaves differently on the host (e.g. some CDN edge paths).
+  async redirects() {
+    return [{ source: "/", destination: "/en", permanent: false }];
+  },
 };
 
 export default withNextIntl(nextConfig);

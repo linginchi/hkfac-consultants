@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isSupabaseConfigured } from "@/lib/supabase";
-import { getSupabaseAdmin } from "@/lib/supabase-admin";
+import { getSupabaseAdmin, isServiceRoleConfigured } from "@/lib/supabase-admin";
 import { getAdminSession } from "@/lib/admin-session";
 import type { TeamMemberType } from "@/lib/team";
 
@@ -90,6 +90,17 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Supabase not configured", data: [] }, { status: 503 });
   }
 
+  if (!isServiceRoleConfigured()) {
+    return NextResponse.json(
+      {
+        error:
+          "SUPABASE_SERVICE_ROLE_KEY is not set. Team admin requires the service role key in Cloudflare environment variables (same as login).",
+        data: [],
+      },
+      { status: 503 }
+    );
+  }
+
   const { searchParams } = new URL(request.url);
   const includeInactive = searchParams.get("all") === "1";
 
@@ -117,6 +128,15 @@ export async function POST(request: NextRequest) {
 
   if (!isSupabaseConfigured()) {
     return NextResponse.json({ error: "Supabase not configured" }, { status: 503 });
+  }
+
+  if (!isServiceRoleConfigured()) {
+    return NextResponse.json(
+      {
+        error: "SUPABASE_SERVICE_ROLE_KEY is not set. Required for team CRUD with RLS.",
+      },
+      { status: 503 }
+    );
   }
 
   try {

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isSupabaseConfigured } from "@/lib/supabase";
-import { getSupabaseAdmin } from "@/lib/supabase-admin";
+import { getSupabaseAdmin, isServiceRoleConfigured } from "@/lib/supabase-admin";
 import { getAdminSession } from "@/lib/admin-session";
 import type { TeamMemberType } from "@/lib/team";
 
@@ -125,6 +125,15 @@ export async function GET(
     return NextResponse.json({ error: "Supabase not configured" }, { status: 503 });
   }
 
+  if (!isServiceRoleConfigured()) {
+    return NextResponse.json(
+      {
+        error: "SUPABASE_SERVICE_ROLE_KEY is not set. Required for team admin with RLS.",
+      },
+      { status: 503 }
+    );
+  }
+
   const db = getSupabaseAdmin();
   const { id } = await params;
   const { data, error } = await db.from("team_members").select("*").eq("id", id).maybeSingle();
@@ -150,6 +159,13 @@ export async function PATCH(
 
   if (!isSupabaseConfigured()) {
     return NextResponse.json({ error: "Supabase not configured" }, { status: 503 });
+  }
+
+  if (!isServiceRoleConfigured()) {
+    return NextResponse.json(
+      { error: "SUPABASE_SERVICE_ROLE_KEY is not set. Required for team admin with RLS." },
+      { status: 503 }
+    );
   }
 
   const db = getSupabaseAdmin();
@@ -196,6 +212,13 @@ export async function DELETE(
 
   if (!isSupabaseConfigured()) {
     return NextResponse.json({ error: "Supabase not configured" }, { status: 503 });
+  }
+
+  if (!isServiceRoleConfigured()) {
+    return NextResponse.json(
+      { error: "SUPABASE_SERVICE_ROLE_KEY is not set. Required for team admin with RLS." },
+      { status: 503 }
+    );
   }
 
   const db = getSupabaseAdmin();

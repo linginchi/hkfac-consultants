@@ -196,13 +196,13 @@ ALTER TABLE verification_codes DISABLE ROW LEVEL SECURITY;
 ALTER TABLE admin_activity_log DISABLE ROW LEVEL SECURITY;
 
 -- ---------- 初始管理員（mark@hkfac.com）----------
--- 當前 API 使用明文比對密碼（見 app/api/admin/login/route.ts 的 verifyPassword）；
--- password_hash 欄位實際存「登入時輸入的同一字串」。首次登入後請透過後台修改密碼流程更新。
+-- password_hash 必須為 bcrypt（與 lib/password.ts 一致）。本地執行：
+--   npm run hash:admin-password -- "YourStrongPassword"
+-- 將輸出的哈希貼到下方 YourBcryptHash。
 --
--- 請在下方把 YourInitialPassword 換成強密碼後再執行（或改為分步 INSERT / UPDATE）：
 /*
 INSERT INTO admin_users (email, password_hash, is_first_login, is_active, role)
-VALUES ('mark@hkfac.com', 'YourInitialPassword', true, true, 'super_admin')
+VALUES ('mark@hkfac.com', 'YourBcryptHash', true, true, 'super_admin')
 ON CONFLICT (email) DO UPDATE SET
     password_hash = EXCLUDED.password_hash,
     is_active = EXCLUDED.is_active,

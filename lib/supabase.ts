@@ -1,28 +1,37 @@
 import { createClient } from "@supabase/supabase-js";
 
-// These environment variables need to be set in your deployment environment
-// For local development, use .env.local
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
+/**
+ * `NEXT_PUBLIC_*` vars are inlined at **build time** in Next.js. For Cloudflare Pages, set
+ * the same names under Settings → Environment variables (Production/Preview) **and** ensure
+ * the build step sees them, or the client bundle may not contain the Supabase URL.
+ */
+const supabaseUrl = (process.env.NEXT_PUBLIC_SUPABASE_URL || "").trim();
+const supabaseAnonKey = (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "").trim();
 
-// Check if Supabase is configured
-export function isSupabaseConfigured(): boolean {
-  return !!supabaseUrl && !!supabaseAnonKey && 
-         supabaseUrl.startsWith("https://") && 
-         supabaseAnonKey.length > 20;
+/**
+ * @returns Supabase public URL, or empty if unset (also useful for diagnostics in API routes).
+ */
+export function getSupabaseUrl(): string {
+  return supabaseUrl;
 }
 
-// Create a single supabase client for interacting with your database
-// Use a dummy client during build if env vars are not set
+export function isSupabaseConfigured(): boolean {
+  return (
+    !!supabaseUrl &&
+    !!supabaseAnonKey &&
+    supabaseUrl.startsWith("https://") &&
+    supabaseAnonKey.length > 20
+  );
+}
+
 export const supabase = isSupabaseConfigured()
   ? createClient(supabaseUrl, supabaseAnonKey, {
       auth: {
-        persistSession: false, // We don't need auth persistence for lead capture
+        persistSession: false,
       },
     })
-  : ({} as ReturnType<typeof createClient>); // Cast empty object for build-time type checking
+  : ({} as ReturnType<typeof createClient>);
 
-// Type definition for lead capture form data
 export interface LeadCaptureData {
   first_name: string;
   last_name: string;
@@ -36,7 +45,6 @@ export interface LeadCaptureData {
   source: string;
 }
 
-// Type for database response
 export interface LeadRecord extends LeadCaptureData {
   id: string;
   created_at: string;

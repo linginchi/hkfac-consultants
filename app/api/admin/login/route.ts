@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isSupabaseConfigured } from "@/lib/supabase";
-import { getSupabaseAdmin } from "@/lib/supabase-admin";
-import { hashPassword, verifyPassword } from "@/lib/password";
+import { getSupabaseAdmin, isServiceRoleConfigured } from "@/lib/supabase-admin";
+import { verifyPassword } from "@/lib/password";
 import crypto from "crypto";
 
 const ADMIN_EMAIL = "mark@hkfac.com";
@@ -37,6 +37,16 @@ export async function POST(request: NextRequest) {
   }
 
   try {
+    if (!isServiceRoleConfigured()) {
+      return NextResponse.json(
+        {
+          error:
+            "Server configuration: add SUPABASE_SERVICE_ROLE_KEY in Cloudflare (and local .env) for Production/Preview. Build may also need it if RLS is enabled.",
+        },
+        { status: 503 }
+      );
+    }
+
     const { email, password } = await request.json();
 
     if (!email || email.toLowerCase() !== ADMIN_EMAIL) {
@@ -64,12 +74,6 @@ export async function POST(request: NextRequest) {
 
     if (!ok) {
       return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
-    }
-
-    // Upgrade legacy plaintext to bcrypt on successful login
-    if (stored && !stored.startsWith("$2")) {
-      const newHash = await hashPassword(password);
-      await db.from("admin_users").update({ password_hash: newHash }).eq("id", adminUser.id);
     }
 
     const sessionToken = generateSessionToken();

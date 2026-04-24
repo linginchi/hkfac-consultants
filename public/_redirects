@@ -1,0 +1,3 @@
+# Cloudflare static asset layer: if the request is served as a plain file, send users to the English locale.
+# OpenNext/Worker also handles / via middleware; this is a double safety net.
+/   /en   302
