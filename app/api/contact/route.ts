@@ -1,24 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabase, LeadCaptureData, isSupabaseConfigured } from "@/lib/supabase";
 import { resend, EMAIL_CONFIG, isResendConfigured, WhitepaperEmailData } from "@/lib/resend";
-
-// Rate limiting map (in production, use Redis or similar)
-const rateLimitMap = new Map<string, number>();
-const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour in milliseconds
-const MAX_REQUESTS_PER_HOUR = 5;
-
-// Simple rate limiting check
-function checkRateLimit(email: string): boolean {
-  const now = Date.now();
-  const lastRequest = rateLimitMap.get(email);
-
-  if (!lastRequest || now - lastRequest > RATE_LIMIT_WINDOW) {
-    rateLimitMap.set(email, now);
-    return true;
-  }
-
-  return false;
-}
+import { checkContactRateLimit } from "@/lib/contact-rate-limit";
 
 // Generate professional whitepaper email content
 function generateWhitepaperEmail(data: WhitepaperEmailData, locale: string): {
@@ -252,8 +235,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Rate limiting
-    if (!checkRateLimit(email)) {
+    const rate = checkContactRateLimit(request, email);
+    if (!rate.ok) {
       return NextResponse.json(
         { error: "Too many requests. Please try again later." },
         { status: 429 }
