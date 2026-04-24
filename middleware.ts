@@ -24,9 +24,10 @@ export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Always send the bare hostname root to English to avoid 404/blank routes on any CDN path.
-  if (pathname === "/") {
+  if (pathname === "/" || pathname === "") {
     const url = request.nextUrl.clone();
-    url.pathname = "/en";
+    // With next.config trailingSlash, prefer /en/ so the host and Next stay consistent.
+    url.pathname = "/en/";
     return NextResponse.redirect(url);
   }
 
@@ -134,16 +135,9 @@ export default async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Match all pathnames except for
-    // - /api routes
-    // - /_next (Next.js internals)
-    // - /_vercel (Vercel internals)
-    // - /static (inside /public)
-    // - all root files inside /public (e.g. /favicon.ico)
+    // Root: locale redirect in middleware
+    "/",
+    // next-intl + admin logic only on app routes. Exclude /api, Next internals, /static (public), and file-like paths (e.g. /favicon.ico)
     "/((?!api|_next|_vercel|static|.*\\..*).*)",
-    // Also match admin routes explicitly
-    "/admin/:path*",
-    "/[a-z]{2}/admin/:path*",
-    "/[a-z]{2}-[A-Z]{2}/admin/:path*",
   ],
 };

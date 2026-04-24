@@ -10,10 +10,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "build:cf": "opennextjs-cloudflare build && cp .open-next/worker.js .open-next/_worker.js",
-    "pages:build": "opennextjs-cloudflare build && cp .open-next/worker.js .open-next/_worker.js",
-    "preview:cf": "opennextjs-cloudflare build && cp .open-next/worker.js .open-next/_worker.js && opennextjs-cloudflare preview",
-    "deploy:cf": "opennextjs-cloudflare build && cp .open-next/worker.js .open-next/_worker.js && wrangler pages deploy .open-next --project-name hkfac-consultants",
+    "build:cf": "opennextjs-cloudflare build && node -e \"require('node:fs').copyFileSync('.open-next/worker.js', '.open-next/_worker.js')\"",
+    "pages:build": "opennextjs-cloudflare build && node -e \"require('node:fs').copyFileSync('.open-next/worker.js', '.open-next/_worker.js')\"",
+    "preview:cf": "opennextjs-cloudflare build && node -e \"require('node:fs').copyFileSync('.open-next/worker.js', '.open-next/_worker.js')\" && opennextjs-cloudflare preview",
+    "deploy:cf": "opennextjs-cloudflare build && node -e \"require('node:fs').copyFileSync('.open-next/worker.js', '.open-next/_worker.js')\" && wrangler pages deploy .open-next --project-name hkfac-consultants",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "hash:admin-password": "node scripts/hash-admin-password.mjs"
   },
@@ -29,7 +29,7 @@
     "resend": "^6.12.2"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.19.3",
+    "@opennextjs/cloudflare": "^1.19.4",
     "@tailwindcss/postcss": "^4",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
